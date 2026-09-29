@@ -99,3 +99,41 @@ multiple servers behind a load balancer, the system can handle more
 traffic and stay online even if one server fails — the same underlying
 idea used by large-scale applications like Netflix, Instagram, and
 Google to stay reliable for millions of users.
+
+## Deployment on AWS
+
+This app runs on 2 AWS EC2 servers (Server 1 and Server 2) behind an
+Application Load Balancer, which shares incoming requests between them.
+
+**Live URL:** http://my-project-lb-1736333109.ap-south-1.elb.amazonaws.com
+
+
+### How I set it up
+1. Launched 2 EC2 instances and ran the app on port 3000 on each
+2. Created a target group with both servers
+3. Created a load balancer that forwards traffic to the target group
+4. Checked that both servers show as healthy
+
+### Proof that load balancing works
+I sent 10 requests to the load balancer. The responses came from both
+Server 1 and Server 2, so the traffic is being shared.
+
+### Screenshots
+
+**1. Both servers running on AWS**
+![Servers running](01-ec2-instances.png.jpeg)
+
+**2. Load balancer sees both servers as healthy**
+![Both servers healthy](02-target-group-healthy.png.jpeg)
+
+**3. Load balancing test from the AWS server (responses alternate between Server 1 and Server 2)**
+![Test from AWS server](03-test-from-aws-server.png.jpeg)
+
+**4. Same test from my laptop**
+![Test from laptop](04-test-from-laptop.png.jpeg)
+
+**5. Server 1 on its own**
+![Server 1](05-server1.png.jpeg)
+
+**6. Server 2 on its own**
+![Server 2](06-server2.png.jpeg)
