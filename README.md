@@ -120,8 +120,6 @@ Server 1 and Server 2, so the traffic is being shared.
 
 ### Screenshots
 
-### Screenshots
-
 **1. Both servers running on AWS**
 ![Servers running](01-ec2-instances.jpeg)
 
