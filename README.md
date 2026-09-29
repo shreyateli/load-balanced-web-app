@@ -120,20 +120,28 @@ Server 1 and Server 2, so the traffic is being shared.
 
 ### Screenshots
 
+### Screenshots
+
 **1. Both servers running on AWS**
-![Servers running](01-ec2-instances.png.jpeg)
+![Servers running](01-ec2-instances.jpeg)
 
 **2. Load balancer sees both servers as healthy**
-![Both servers healthy](02-target-group-healthy.png.jpeg)
+![Both servers healthy](02-target-group-healthy.jpeg)
 
-**3. Load balancing test from the AWS server (responses alternate between Server 1 and Server 2)**
-![Test from AWS server](03-test-from-aws-server.png.jpeg)
+**3. Load balancing test from the AWS server**
+![Test from AWS server](03-test-from-aws-server.jpeg)
 
 **4. Same test from my laptop**
-![Test from laptop](04-test-from-laptop.png.jpeg)
+![Test from laptop](04-test-from-laptop.jpeg)
 
 **5. Server 1 on its own**
-![Server 1](05-server1.png.jpeg)
+![Server 1](05-server1.jpeg)
 
 **6. Server 2 on its own**
-![Server 2](06-server2.png.jpeg)
+![Server 2](06-server2.jpeg)
+
+**7. Load balancer link in the browser, showing Server 1**
+![Browser showing Server 1](07-browser-server1.jpeg)
+
+**8. Same link after refreshing, showing Server 2**
+![Browser showing Server 2](08-browser-server2.jpeg)
