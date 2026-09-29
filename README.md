@@ -106,7 +106,6 @@ Application Load Balancer, which shares incoming requests between them.
 
 **Live URL:** http://my-project-lb-1736333109.ap-south-1.elb.amazonaws.com
 
-
 ### How I set it up
 1. Launched 2 EC2 instances and ran the app on port 3000 on each
 2. Created a target group with both servers
