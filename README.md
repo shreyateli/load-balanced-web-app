@@ -12,8 +12,8 @@ to stay fast and reliable under load.
 - The exact same app runs on two separate EC2 instances
 - An AWS Load Balancer sits in front of both servers and distributes
   incoming visitors between them
-- If you refresh the page repeatedly, you'll see it alternate between
-  `Server 1` and `Server 2` — proof that traffic is being split
+- If you send several requests (or refresh the page a few times),
+  you'll see responses from both `Server 1` and `Server 2`, which shows that traffic is being split
 - If one server goes down, the load balancer automatically stops sending
   traffic to it and routes everyone to the remaining healthy server
 
@@ -45,14 +45,13 @@ to stay fast and reliable under load.
 - **AWS Application Load Balancer (ALB)** — distributes traffic across
   both servers and health-checks them
 - **Jest + Supertest** — automated tests for the app
-- **GitHub Actions** — CI/CD pipeline that runs tests on every push and
-  blocks the push if any test fails
-
+- **GitHub Actions** — CI/CD pipeline that runs the tests on every push and marks the run as failed if any test fails
+    
 ## How to run it locally
 
 ```bash
 # 1. Clone this repo
-git clone https://github.com/<your-username>/load-balanced-web-app.git
+git clone https://github.com/shreyateli/load-balanced-web-app.git
 cd load-balanced-web-app
 
 # 2. Install dependencies
@@ -68,16 +67,16 @@ npm test
 
 ## How it was deployed on AWS
 
-1. Launched two `t2.micro` EC2 instances (free-tier eligible)
+1. Launched two `t3.micro` EC2 instances (free-tier eligible)
 2. Installed Node.js on each instance
 3. Copied this project onto both instances
 4. On Server 1, ran the app with `SERVER_NAME="Server 1"`
 5. On Server 2, ran the app with `SERVER_NAME="Server 2"`
-6. Created an AWS Application Load Balancer and registered both
-   instances as targets
-7. Pointed a browser at the load balancer's public address — refreshing
-   the page shows requests alternating between both servers
-
+6. Created a target group with both instances, then an AWS Application
+   Load Balancer that forwards traffic to it
+7. Opened the load balancer's public address in a browser (and tested it with repeated requests),
+   which showed responses coming from both servers
+   
 ## Testing & CI/CD
 
 This repo uses **GitHub Actions** (see `.github/workflows/ci.yml`) to
